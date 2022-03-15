@@ -1,3 +1,3 @@
 class Product < ApplicationRecord
-    has_many :comments, dependent: :delete
+  has_many :comments, dependent: :destroy
 end
