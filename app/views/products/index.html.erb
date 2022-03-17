@@ -1,4 +1,7 @@
 <p style="color: green"><%= notice %></p>
+<% if user_signed_in?%>
+  Hi <span> <%= current_user.name%> </span>
+<% end %>
 <h1>Products</h1>
 <div id="products">
   <% @products.each do |product| %>
@@ -8,8 +11,13 @@
     </p>
   <% end %>
 </div>
-<%= link_to "New product", new_product_path %>
+<% if user_signed_in? && current_user.admin %>
+  <%= link_to "New product", new_product_path %>
+<% end %>
 <br/>
 <%= link_to  "sign up", new_user_registration_path	 %>
 <br/>
 <%= link_to  "sign in", new_user_session_path	 %>
+<%= link_to  "sign out",destroy_user_session_path,  data: {
+                            turbo_method: :delete
+                        }%>

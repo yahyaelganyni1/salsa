@@ -1,13 +1,16 @@
 <p style="color: green"><%= notice %></p>
 <%= render @product %>
 <div>
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
+  <% if user_signed_in? && current_user.admin %>
+    <%= link_to "Edit this product", edit_product_path(@product) %> |
+    <%= button_to "Destroy this product", @product, method: :delete %>
+  <%end%>
   <%= link_to "Back to products", products_path %>
-  <%= button_to "Destroy this product", @product, method: :delete %>
 </div>
 <% if user_signed_in? %>
-  <% @comments.each do |comment| %>
-    <%= comment.text %>
+  <% @product.comments.each do |comment| %>
+    <%= comment.user.name%>
+    <p> <%= comment.text %> </p>
   <% end %>
   <%= render  "comments/new" %>
 <% end %>

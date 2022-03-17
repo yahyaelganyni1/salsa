@@ -1,7 +1,10 @@
 class CommentsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
-    @comment = @product.comments.new(text: comment_params[:text], user: current_user)
+    @comment = @product.comments.new(text: comment_params[:text], user_id: current_user.id,
+                                     product_id: params[:product_id])
+
+    @comment.user = current_user
     respond_to do |format|
       if @comment.save
         format.html { redirect_to product_path(@product.id), notice: 'Comment added!' }
