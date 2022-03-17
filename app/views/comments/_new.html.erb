@@ -1,0 +1,4 @@
+<%= form_with url: product_comments_path(@product.id), local: true do |form| %>
+  <%= form.text_area :text %>
+  <%= form.submit 'submit' %>
+<% end %>

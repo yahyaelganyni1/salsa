@@ -1,7 +1,5 @@
 <p style="color: green"><%= notice %></p>
-
 <h1>Products</h1>
-
 <div id="products">
   <% @products.each do |product| %>
     <%= render product %>
@@ -10,5 +8,8 @@
     </p>
   <% end %>
 </div>
-
 <%= link_to "New product", new_product_path %>
+<br/>
+<%= link_to  "sign up", new_user_registration_path	 %>
+<br/>
+<%= link_to  "sign in", new_user_session_path	 %>
