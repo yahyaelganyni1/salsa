@@ -8,11 +8,12 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    @comments = Comment.all
+    @comments = @product.comments
   end
 
   # GET /products/new
   def new
+    :authenticate_user!
     @product = Product.new
   end
 
@@ -21,6 +22,7 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
+    :authenticate_user!
     @product = Product.new(product_params)
 
     respond_to do |format|
@@ -36,6 +38,7 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
+    :authenticate_user!
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to product_url(@product), notice: 'Product was successfully updated.' }
@@ -49,6 +52,7 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1 or /products/1.json
   def destroy
+    :authenticate_user!
     @product.destroy
 
     respond_to do |format|
