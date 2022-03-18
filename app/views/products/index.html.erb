@@ -2,17 +2,12 @@
 <div id="products" class="product">
   <div class="product-card container">
     <% @products.each do |product| %>
-      <%= render product %>
+      <div class="card-body">
+        <%= render product %>
+      </div>
     <% end %>
   </div>
 </div>
 <% if user_signed_in? && current_user.admin %>
   <%= link_to "New product", new_product_path %>
 <% end %>
-<br/>
-<%= link_to  "sign up", new_user_registration_path	 %>
-<br/>
-<%= link_to  "sign in", new_user_session_path	 %>
-<%= link_to  "sign out",destroy_user_session_path,  data: {
-                            turbo_method: :delete
-                        }%>

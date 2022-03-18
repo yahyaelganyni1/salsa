@@ -1,6 +1,6 @@
 <%= form_with(model: [product, product.comments.build]) do |f| %>
-  <div class="form-control">
-    <%= f.text_area :text %>
-    <%= f.submit %>
+  <div class="form-control justify-content-md-end d-md-flex ">
+    <%= f.text_area :text, class:"form-control",rows:"2", placeholder:"say somthing" %>
+    <%= f.submit "comment", class:"btn btn-primary me-md-2 p-3" %>
   </div>
 <% end %>

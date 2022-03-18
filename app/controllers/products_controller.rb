@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    @comments = @product.comments
+    @comments = Comment.all
   end
 
   # GET /products/new
