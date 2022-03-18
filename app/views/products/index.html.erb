@@ -1,14 +1,10 @@
-<% if user_signed_in?%>
-  Hi <span> <%= current_user.name%> </span>
-<% end %>
-<h1>Products</h1>
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
-  <% end %>
+<h1 class="text-center">Our Products</h1>
+<div id="products" class="product">
+  <div class="product-card container">
+    <% @products.each do |product| %>
+      <%= render product %>
+    <% end %>
+  </div>
 </div>
 <% if user_signed_in? && current_user.admin %>
   <%= link_to "New product", new_product_path %>

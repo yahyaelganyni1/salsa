@@ -33,9 +33,8 @@ class CommentsController < ApplicationController
       flash[:notice] = 'comment has been created'
       redirect_to product_path(@product)
 
-    elsif flash[:notice] = 'comment has not created'
-      redirect_to product_path(@product)
-
+    elsif flash[:notice] = 'sign in to comment'
+      redirect_to new_user_session_path
     end
   end
 

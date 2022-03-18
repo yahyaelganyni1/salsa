@@ -1,0 +1,10 @@
+@import 'bootstrap';
+a {
+  text-decoration: none;
+}
+.product-card {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  grid-gap: 6px;
+}

@@ -74,4 +74,7 @@ end
 gem 'bootstrap', '~> 5.1.3'
 gem 'cancancan'
 gem 'devise'
+
 gem 'sass-rails'
+
+gem 'jquery-rails'
