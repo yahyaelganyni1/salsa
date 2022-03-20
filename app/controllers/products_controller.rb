@@ -8,21 +8,23 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    @comments = Comment.all
+    @comments = @product.comments
   end
 
   # GET /products/new
   def new
-    :authenticate_user!
+    authenticate_admin!
     @product = Product.new
   end
 
   # GET /products/1/edit
-  def edit; end
+  def edit
+    authenticate_admin!
+  end
 
   # POST /products or /products.json
   def create
-    :authenticate_user!
+    authenticate_admin!
     @product = Product.new(product_params)
 
     respond_to do |format|
@@ -38,7 +40,8 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
-    :authenticate_user!
+    authenticate_admin!
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to product_url(@product), notice: 'Product was successfully updated.' }
@@ -52,7 +55,7 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1 or /products/1.json
   def destroy
-    :authenticate_user!
+    authenticate_admin!
     @product.destroy
 
     respond_to do |format|
@@ -62,6 +65,11 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def authenticate_admin!
+    authenticate_user!
+    redirect_to products_url, status: :forbidden unless current_user.admin?
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_product

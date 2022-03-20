@@ -11,4 +11,7 @@
       <%= product.price %>$
     </p>
   </div>
+  <%= form_with(model: product) do |form| %>
+    <%= form.check_box :card, onchange: "this.form.submit();" %>
+  <% end %>
 </div>
