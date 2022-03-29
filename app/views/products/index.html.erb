@@ -11,3 +11,8 @@
 <% if user_signed_in? && current_user.admin %>
   <%= link_to "New product", new_product_path %>
 <% end %>
+<% @products.each do |product| %>
+  <% if product.card %>
+    <%= product.name%>
+  <% end %>
+<% end %>

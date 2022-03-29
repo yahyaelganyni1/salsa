@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cards
   root 'products#index'
   resources :products do
     resources :comments
